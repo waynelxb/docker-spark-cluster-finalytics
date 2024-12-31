@@ -1,0 +1,69 @@
+volumes:
+  shared-workspace:
+    name: "Distributed-FS"
+  spark-logs:
+    name: "Spark-Logs"
+
+services:
+  # llama8b:
+  #   container_name: llama8b
+  #   image: llama8b
+  #   ports:
+  #     - "9090:9090"
+    
+  jupyterlab:
+    container_name: jupyterlab
+    image: jupyterlab-lxb
+    volumes:
+      - shared-workspace:/opt/workspace
+      - spark-logs:/opt/spark/spark-events
+    ports:
+      - "8888:8888"
+
+  spark-master:
+    image: spark-cluster-lxb
+    container_name: spark-master
+    entrypoint: ["/opt/spark/entrypoint.sh", "master"]
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080"]
+      interval: 5s
+      timeout: 3s
+      retries: 3
+    volumes:
+      - shared-workspace:/opt/workspace
+      - spark-logs:/opt/spark/spark-events
+    env_file:
+      - .env.spark
+    ports:
+      - "8080:8080"
+      - "7077:7077"
+
+  spark-history-server:
+    image: spark-cluster-lxb
+    container_name: spark-history
+    entrypoint: ["/opt/spark/entrypoint.sh", "history"]
+    depends_on:
+      - spark-master
+    volumes:
+      - shared-workspace:/opt/workspace
+      - shared-workspace:/opt/spark/spark-events
+    env_file:
+      - .env.spark
+    ports:
+      - "18080:18080"
+
+  spark-worker:
+    image: spark-cluster-lxb
+    entrypoint: ["/opt/spark/entrypoint.sh", "worker"]
+    depends_on:
+      - spark-master
+    volumes:
+      - shared-workspace:/opt/workspace
+      - spark-logs:/opt/spark/spark-events
+    env_file:
+      - .env.spark
+    environment:
+      - SPARK_WORKER_CORES=3
+      - SPARK_WORKER_MEMORY=12g
+      - SPARK_EXECUTOR_MEMORY=4g
+      - SPARK_EXECUTOR_CORES=1

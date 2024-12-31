@@ -1,0 +1,5 @@
+minio-volume/
+nessie-data/
+minio-data/
+shared-workspace/finalytics_spark/src/finalytics_spark/__pycache__/
+shared-workspace/finalytics_spark/src/finalytics_spark/.ipynb_checkpoints/

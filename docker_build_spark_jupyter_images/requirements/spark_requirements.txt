@@ -1,0 +1,21 @@
+# Installing pyiceberg with dependencies should be listed at the top, or it could fail, do not know why
+pyiceberg[gcsfs,adlfs,s3fs,sql-sqlite,sql-postgres,glue,hive]
+
+pandas
+pyarrow
+numpy 
+pyarrow 
+psycopg2-binary 
+duckdb 
+findspark 
+dremio-simple-query 
+boto3 
+s3fs 
+minio
+datafusion
+
+# Because spark job need yfinance, it would be better to install yfinance on all nodes
+yfinance
+
+# pyspark version should be the same as spark version
+pyspark==3.5.4

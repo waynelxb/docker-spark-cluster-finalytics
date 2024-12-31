@@ -1,0 +1,61 @@
+# Libraries for Jupyter Notebook Interface and Interactivity
+jupyterlab==4.3.4
+ipywidgets 
+ipython 
+notebook
+poetry-kernel
+
+# Libraries for DataFrames and SQL-like Operations
+sqlframe[all] 
+getdaft[all] 
+ibis-framework[all] 
+sqlalchemy 
+
+# Libraries for Scientific Computing and Financial Data
+scipy
+yfinance
+
+
+# Libraries for Data Manipulation and Parallelism
+polars 
+
+# Libraries for Web Scraping and HTTP Requests
+requests 
+beautifulsoup4 
+lxml 
+
+# Libraries for Data Visualization
+matplotlib 
+seaborn 
+
+
+
+
+#############################################################################
+
+# not sure whether need to specify the version
+# numpy==1.26.4
+
+# For web archive (WARC) file processing
+# warcio
+
+# Libraries Typically Used for Machine Learning and AI
+# tensorflow 
+# torch 
+# xgboost 
+# lightgbm 
+# scikit-learn 
+
+# Libraries for Distributed and Parallel Computing
+# dask 
+
+# Libraries for Statistical Modeling and Visualization
+# statsmodels 
+# plotly 
+# openpyxl 
+
+# Libraries for Natural Language Processing (NLP)
+# sentence-transformers
+# huggingface-hub
+# kaggle
+# transformers
