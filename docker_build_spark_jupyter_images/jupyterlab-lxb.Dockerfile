@@ -11,17 +11,10 @@ COPY requirements/jupyterlab_requirements.txt .
 RUN pip3 install --no-cache-dir -r jupyterlab_requirements.txt
 
 
-# RUN curl -sSL https://install.python-poetry.org | python3 -  
-# ENV POETRY_HOME=/root/.local
-# ENV PATH=$PATH:$POETRY_HOME/bin
-# RUN echo $PATH
-
 WORKDIR ${SHARED_WORKSPACE}
 
-# CMD jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token=
-# Add a custom shell initialization script that ensures the environment variables are loaded properly when the JupyterLab terminal starts.
-# Ensure Bash is used and loads .bashrc
-# RUN echo "export PATH='/root/.local/bin:$PATH'" >> /root/.bashrc
-# RUN echo 'export PATH=$PATH:$POETRY_HOME/bin' >> /root/.bashrc
 
+# When the container is started, CMD will automatically run, launching JupyterLab configured for use in environments 
+# bash is the shell being invoked.
+# The -c option tells bash to execute the command that follows as a string.
 CMD ["bash", "-c", "jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token="]
