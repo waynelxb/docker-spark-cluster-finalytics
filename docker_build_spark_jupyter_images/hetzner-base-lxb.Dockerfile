@@ -35,12 +35,15 @@ RUN pip install --upgrade pip
 
 # Install poetry
 RUN curl -sSL https://install.python-poetry.org | python3 -
-ENV PATH="/root/.local/bin:$PATH"  
+ENV POETRY_HOME=/root/.local
+# ENV PATH=$POETRY_HOME/bin:$PATH
+
+# Add a custom shell initialization script that ensures the environment variables are loaded properly when the JupyterLab terminal starts.
+# Ensure Bash is used and loads .bashrc
+RUN echo 'export PATH=$PATH:$POETRY_HOME/bin' >> /root/.bashrc
 
 # Install required packages
 COPY requirements/spark_requirements.txt .
 RUN pip3 install --no-cache-dir -r spark_requirements.txt
-
-
 
 CMD ["bash"]
