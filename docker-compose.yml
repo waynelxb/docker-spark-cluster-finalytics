@@ -154,7 +154,8 @@ services:
     environment:
       - AWS_REGION=us-east-1
       - AWS_ACCESS_KEY_ID=admin  # Minio username
-      - AWS_SECRET_ACCESS_KEY=password  # Minio password    
+      - AWS_SECRET_ACCESS_KEY=password  # Minio password
+      - PATH:"/root/.local/bin:${PATH}"
     networks:
       cluster-network:
         ipv4_address: 172.33.0.50

@@ -29,21 +29,19 @@ ENV SHARED_WORKSPACE=${shared_workspace}
 VOLUME ${shared_workspace}
 
 
-# Install spark module here to avoid repeated installation in jupyter and spark container
-RUN pip3 install --upgrade pip 
-RUN pip install --upgrade pip 
-
 # Install poetry
-RUN curl -sSL https://install.python-poetry.org | python3 -
+# ENV POETRY_HOME="/root/.local/share/pypoetry"
 ENV POETRY_HOME=/root/.local
-# ENV PATH=$POETRY_HOME/bin:$PATH
+ENV PATH="$POETRY_HOME/bin:$PATH"
 
-# Add a custom shell initialization script that ensures the environment variables are loaded properly when the JupyterLab terminal starts.
-# Ensure Bash is used and loads .bashrc
-RUN echo 'export PATH=$PATH:$POETRY_HOME/bin' >> /root/.bashrc
+# # Ensure Bash is used and loads .bashrc
+RUN curl -sSL https://install.python-poetry.org | POETRY_HOME=${POETRY_HOME} python3 - && \
+    echo 'export PATH=$PATH:$POETRY_HOME/bin' >> /root/.bashrc
+
 
 # Install required packages
 COPY requirements/spark_requirements.txt .
-RUN pip3 install --no-cache-dir -r spark_requirements.txt
+RUN pip3 install --upgrade pip && \
+    pip3 install --no-cache-dir -r spark_requirements.txt
 
 CMD ["bash"]

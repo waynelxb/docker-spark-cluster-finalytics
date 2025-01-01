@@ -1,12 +1,13 @@
 [tool.poetry]
-name = "rp-poetry"
+name = "my-proj"
 version = "0.1.0"
 description = ""
-authors = ["waynelxb <waynelxb@gmail.com>"]
+authors = ["Your Name <you@example.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
+ipykernel = "^6.29.5"
 
 
 [build-system]
