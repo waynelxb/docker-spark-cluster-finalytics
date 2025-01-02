@@ -111,9 +111,9 @@ services:
     env_file:
       - .env.spark
     environment:
-      - SPARK_WORKER_CORES=3
-      - SPARK_WORKER_MEMORY=12g
-      - SPARK_EXECUTOR_MEMORY=4g
+      - SPARK_WORKER_CORES=1
+      - SPARK_WORKER_MEMORY=2G
+      - SPARK_EXECUTOR_MEMORY=2G
       - SPARK_EXECUTOR_CORES=1
       # AWS ENV should be added to all nodes
       - AWS_REGION=us-east-1
