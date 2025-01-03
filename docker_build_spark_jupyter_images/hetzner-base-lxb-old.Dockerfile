@@ -36,7 +36,8 @@ ENV PATH="$POETRY_HOME/bin:$PATH"
 
 # # Ensure Bash is used and loads .bashrc
 RUN curl -sSL https://install.python-poetry.org | POETRY_HOME=${POETRY_HOME} python3 - && \
-    echo 'export PATH=$PATH:$POETRY_HOME/bin' >> /root/.bashrc
+    echo 'export PATH=$PATH:$POETRY_HOME/bin' >> /root/.bashrc && \
+    poetry config virtualenvs.in-project true
 
 
 # Install required packages

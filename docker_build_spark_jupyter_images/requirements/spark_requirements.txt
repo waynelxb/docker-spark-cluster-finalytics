@@ -18,4 +18,4 @@ datafusion
 yfinance
 
 # pyspark version should be the same as spark version
-pyspark==3.5.4
+pyspark==3.5.2

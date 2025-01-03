@@ -14,7 +14,7 @@ yfinance = "^0.2.51"
 psycopg2-binary = "^2.9.10"
 nbimporter = "^0.3.4"
 nbformat = "^5.10.4"
-pyspark = "3.5.4"
+pyspark = "3.5.2"
 
 
 [build-system]

@@ -1228,12 +1228,12 @@ windows-terminal = ["colorama (>=0.4.6)"]
 
 [[package]]
 name = "pyspark"
-version = "3.5.2"
+version = "3.5.4"
 description = "Apache Spark Python API"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "pyspark-3.5.2.tar.gz", hash = "sha256:bbb36eba09fa24e86e0923d7e7a986041b90c714e11c6aa976f9791fe9edde5e"},
+    {file = "pyspark-3.5.4.tar.gz", hash = "sha256:1c2926d63020902163f58222466adf6f8016f6c43c1f319b8e7a71dbaa05fc51"},
 ]
 
 [package.dependencies]
@@ -1797,4 +1797,4 @@ repair = ["scipy (>=1.6.3)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "722fd249f34f27cb43412627dbcf91936e34953fcc094057e0a183f91539665f"
+content-hash = "0e67598ae20552bb5f1f5eb250bf022c5fed8ffca8e507bed6a9a6fd172de4f3"

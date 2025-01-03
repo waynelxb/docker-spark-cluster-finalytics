@@ -1,4 +1,4 @@
-version: "3.7"
+version: "3.8"
 
 services:
   # Nessie Catalog Server Using In-Memory Store
@@ -111,10 +111,10 @@ services:
     env_file:
       - .env.spark
     environment:
-      - SPARK_WORKER_CORES=1
+      - SPARK_WORKER_CORES=2
       - SPARK_WORKER_MEMORY=2G
       - SPARK_EXECUTOR_MEMORY=2G
-      - SPARK_EXECUTOR_CORES=1
+      # - SPARK_EXECUTOR_CORES=1
       # AWS ENV should be added to all nodes
       - AWS_REGION=us-east-1
       - AWS_ACCESS_KEY_ID=admin  # Minio username
