@@ -37,7 +37,6 @@ VOLUME ${SHARED_WORKSPACE}
 ENV SHELL=/bin/bash
 
 # Install Poetry
-ENV SHELL=/bin/bash
 ENV POETRY_HOME=/root/.local
 ENV PATH="$POETRY_HOME/bin:$PATH"
 RUN curl -sSL https://install.python-poetry.org | python3 - && \
