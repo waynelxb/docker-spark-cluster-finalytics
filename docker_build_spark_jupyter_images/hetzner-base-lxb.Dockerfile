@@ -41,12 +41,13 @@ ENV SHELL=/bin/bash
 ENV POETRY_HOME=/root/.local
 ENV PATH="$POETRY_HOME/bin:$PATH"
 RUN curl -sSL https://install.python-poetry.org | python3 - && \
+    # The following also works, but /root/.bashrc is only sourced by bash shell.
+    # echo 'export PATH=$PATH:$POETRY_HOME/bin' >> /root/.bashrc
     # Add POETRY_HOME to PATH in /etc/profile, where python:3.11-slim saves the default PATH.
     # Add it to /etc/profile, the setting can be used for sh (the default JupyterLab container interactive shell) and bash.     
-    echo 'export PATH=$PATH:$POETRY_HOME/bin' >> /etc/profile
-# The following also works, but /root/.bashrc is only sourced by bash shell.
-#   echo 'export PATH=$PATH:$POETRY_HOME/bin' >> /root/.bashrc
-
+    echo 'export PATH=$PATH:$POETRY_HOME/bin' >> /etc/profile && \
+# Create poetry env within project 
+    poetry config virtualenvs.in-project true
 
 
 # Copy and install Python dependencies for Spark
