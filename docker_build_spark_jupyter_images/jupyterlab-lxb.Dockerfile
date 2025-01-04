@@ -6,13 +6,14 @@ FROM hetzner-base-lxb
 COPY --from=python-slim /usr/local/lib/python3.11/site-packages /usr/local/lib/python3.11/site-packages
 COPY --from=python-slim /usr/local/bin /usr/local/bin
 
-# install pkgs listed in requirements/jupyterlab_requirements.txt 
+# Install pkgs listed in requirements/jupyterlab_requirements.txt 
 COPY requirements/jupyterlab_requirements.txt .
 RUN pip3 install --no-cache-dir -r jupyterlab_requirements.txt
 
+# The default SHELL is sh, instead of bash, we need to set it /bin/bash, also it has to be set in Dockerfile, instead of docker-compose.yml 
+# ENV SHELL=/bin/bash
 
 WORKDIR ${SHARED_WORKSPACE}
-
 
 # When the container is started, CMD will automatically run, launching JupyterLab configured for use in environments 
 # bash is the shell being invoked.

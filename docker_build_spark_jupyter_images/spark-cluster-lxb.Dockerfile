@@ -15,8 +15,8 @@ RUN mkdir -p ${HADOOP_HOME} && mkdir -p ${SPARK_HOME}
 # Set SPARK_HOME as current work folder when dockerfile run here.
 WORKDIR ${SPARK_HOME}
 
-# Make sure the pyspark version in spark_requirements.txt is also 3.5.4
-ARG spark_version=3.5.4
+# Make sure the pyspark version in spark_requirements.txt is also 3.5.2
+ARG spark_version=3.5.2
 
 RUN curl https://archive.apache.org/dist/spark/spark-${spark_version}/spark-${spark_version}-bin-hadoop3.tgz -o spark-${spark_version}-bin-hadoop3.tgz \
     && tar xvzf spark-${spark_version}-bin-hadoop3.tgz --directory /opt/spark --strip-components 1 \

@@ -3,7 +3,8 @@ docker_env:
   catalog_uri: "http://nessie:19120/api/v1"  # Nessie Server URI
   warehouse: "s3://warehouse/"               # Minio Address to Write to
   storage_uri: "http://172.33.0.20:9000"      # Minio IP address from docker inspect
-
+  spark_master_uri: "spark://172.33.0.30:7077"
+  
 databases:
   postgresql:
     finalytics:
